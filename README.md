@@ -44,16 +44,3 @@ Reference 文献来源
 ```text
 SiO2, TiO2, Al2O3, Fe2O3, FeO, MgO, CaO, Na2O, K2O, P2O5, Rb, Sr, Ba, Zr, Hf, Sn
 ```
-
-## 部署到 GitHub Pages
-
-1. 新建 GitHub 仓库。
-2. 上传本文件夹中的所有文件。
-3. 打开仓库 Settings → Pages。
-4. Source 选择 `Deploy from a branch`。
-5. Branch 选择 `main` 和 `/root`。
-6. 保存后等待几分钟，即可得到公开网址。
-
-## 注意
-
-本模板默认读取 `data.csv`。如果你希望直接读取 `.xlsx` 文件，需要加入 SheetJS；但为了稳定部署，推荐先使用 CSV。
