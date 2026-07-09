@@ -2,10 +2,19 @@ const DATA_URL = 'data.csv';
 
 const map = L.map('map').setView([20, 105], 4);
 
-L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-  maxZoom: 17,
-  attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap'
-}).addTo(map);
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+  {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+  }
+).addTo(map);
+
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+  {
+    pane: 'shadowPane'
+  }
+).addTo(map);
 
 let allRows = [];
 let markersLayer = L.layerGroup().addTo(map);
