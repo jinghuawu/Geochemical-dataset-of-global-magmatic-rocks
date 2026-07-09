@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Igneous Geochemistry Database</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Global Igneous Geochemistry Database</h1>
+      <p>全球岩浆岩全岩地球化学数据地图</p>
+    </div>
+    <a class="download" href="data.csv" download>下载示例数据 CSV</a>
+  </header>
+
+  <main>
+    <aside id="sidebar">
+      <h2>筛选</h2>
+      <label>岩体名称</label>
+      <input id="searchInput" type="text" placeholder="例如 Miaoershan" />
+
+      <label>岩石类型</label>
+      <select id="rockTypeFilter">
+        <option value="all">全部</option>
+      </select>
+
+      <label>最小 SiO₂ wt.%</label>
+      <input id="sio2Min" type="number" step="0.01" placeholder="例如 70" />
+
+      <button id="resetBtn">重置筛选</button>
+
+      <section class="info-box">
+        <h3>说明</h3>
+        <p>地图上的圆圈代表已发表地球化学数据的岩体。点击圆圈可查看该岩体样品数据。</p>
+        <p>你只需要替换 <code>data.csv</code>，即可更新网站数据。</p>
+      </section>
+    </aside>
+
+    <section id="map-section">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <div id="dataModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn">×</button>
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta"></div>
+      <div class="table-wrap">
+        <table id="sampleTable"></table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
