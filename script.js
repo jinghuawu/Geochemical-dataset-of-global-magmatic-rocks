@@ -3,16 +3,9 @@ const DATA_URL = 'data.csv';
 const map = L.map('map').setView([20, 105], 4);
 
 L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+  'https://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
   {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
-  }
-).addTo(map);
-
-L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
-  {
-    pane: 'shadowPane'
+    attribution: 'Tiles © Esri'
   }
 ).addTo(map);
 
