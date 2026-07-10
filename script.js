@@ -3,7 +3,7 @@ const DATA_URL = 'data.csv';
 const map = L.map('map').setView([20, 105], 4);
 
 L.tileLayer(
-  'https://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   {
     attribution: 'Tiles © Esri'
   }
