@@ -10,7 +10,7 @@ const satelliteLayer = L.tileLayer(
 ).addTo(map);
 
 const imageBounds = [
-  [20, 100.0],
+  [20, 100],
   [33, 125]
 ];
 
@@ -31,9 +31,6 @@ L.control.layers(
     '我的地图': customMapLayer
   }
 ).addTo(map);
-
-let allRows = [];
-let markersLayer = L.layerGroup().addTo(map);
 
 let allRows = [];
 let markersLayer = L.layerGroup().addTo(map);
