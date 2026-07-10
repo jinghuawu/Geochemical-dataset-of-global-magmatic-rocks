@@ -2,12 +2,38 @@ const DATA_URL = 'data.csv';
 
 const map = L.map('map').setView([20, 105], 4);
 
-L.tileLayer(
+const satelliteLayer = L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   {
     attribution: 'Tiles © Esri'
   }
 ).addTo(map);
+
+const imageBounds = [
+  [20, 100.0],
+  [33, 125]
+];
+
+const customMapLayer = L.imageOverlay(
+  'map.png',
+  imageBounds,
+  {
+    opacity: 0.6,
+    interactive: false
+  }
+).addTo(map);
+
+L.control.layers(
+  {
+    'Esri 卫星图': satelliteLayer
+  },
+  {
+    '我的地图': customMapLayer
+  }
+).addTo(map);
+
+let allRows = [];
+let markersLayer = L.layerGroup().addTo(map);
 
 let allRows = [];
 let markersLayer = L.layerGroup().addTo(map);
