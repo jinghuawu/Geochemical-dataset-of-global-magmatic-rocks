@@ -15,7 +15,7 @@ const imageBounds = [
 ];
 
 const customMapLayer = L.imageOverlay(
-  'map.png',
+  'Map.png',
   imageBounds,
   {
     opacity: 0.6,
