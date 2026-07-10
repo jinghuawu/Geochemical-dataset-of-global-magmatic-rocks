@@ -9,28 +9,34 @@ const satelliteLayer = L.tileLayer(
   }
 ).addTo(map);
 
-const imageBounds = [
-  [20, 100],
-  [33, 125]
-];
+// 加载 GeoTIFF
+fetch("Map.tif")
+  .then(response => response.arrayBuffer())
+  .then(arrayBuffer => parseGeoraster(arrayBuffer))
+  .then(georaster => {
 
-const customMapLayer = L.imageOverlay(
-  'Map.png',
-  imageBounds,
-  {
-    opacity: 0.6,
-    interactive: false
-  }
-).addTo(map);
+    const customMapLayer = new GeoRasterLayer({
+      georaster: georaster,
+      opacity: 0.7,
+      resolution: 256
+    });
 
-L.control.layers(
-  {
-    'Esri 卫星图': satelliteLayer
-  },
-  {
-    '我的地图': customMapLayer
-  }
-).addTo(map);
+    customMapLayer.addTo(map);
+
+    L.control.layers(
+      {
+        "Esri 卫星图": satelliteLayer
+      },
+      {
+        "我的地图": customMapLayer
+      }
+    ).addTo(map);
+
+    // 自动缩放到TIFF范围
+    map.fitBounds(customMapLayer.getBounds());
+
+  })
+  .catch(err => console.error(err));
 
 let allRows = [];
 let markersLayer = L.layerGroup().addTo(map);
